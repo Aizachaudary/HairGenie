@@ -1,4 +1,5 @@
 import { Logo } from "@/components/layout/logo";
+import { AppNavLinks } from "@/components/layout/app-nav-links";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -26,8 +27,9 @@ function getInitials(name: string | null, email: string) {
 export function AppTopbar({ email, fullName }: { email: string; fullName: string | null }) {
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur supports-backdrop-filter:bg-background/60">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Logo />
+        <AppNavLinks />
         <DropdownMenu>
           <DropdownMenuTrigger className="outline-none">
             <Avatar className="size-9 border border-border">

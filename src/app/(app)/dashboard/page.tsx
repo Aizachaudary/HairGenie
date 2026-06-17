@@ -7,6 +7,7 @@ import { DAY_LABELS, getTodayDayIndex } from "@/lib/routines/week";
 import { computeHairHealthScore } from "@/lib/scoring";
 import { getClimateTip, getDailyTip } from "@/lib/content/tips";
 import { GreetingHeader } from "@/components/dashboard/greeting-header";
+import { ReminderBanner } from "@/components/dashboard/reminder-banner";
 import { HealthScoreCard } from "@/components/dashboard/health-score-card";
 import { TodaysRoutineCard } from "@/components/dashboard/todays-routine-card";
 import { WeekProgressCard } from "@/components/dashboard/week-progress-card";
@@ -59,10 +60,13 @@ export default async function DashboardPage() {
   const latestLog = logs[0] ?? null;
 
   const firstName = (profile.full_name ?? "there").split(" ")[0] || "there";
+  const hasUnfinishedToday = todayTasks.some((task) => !task.completed);
 
   return (
     <div className="mx-auto max-w-6xl space-y-6 px-4 py-8 sm:px-6">
       <GreetingHeader name={firstName} />
+
+      {profile.reminders_enabled && hasUnfinishedToday && <ReminderBanner />}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <HealthScoreCard score={healthScore} />

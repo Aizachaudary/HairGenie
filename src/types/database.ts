@@ -24,6 +24,7 @@ export type Profile = {
   location: string | null;
   water_type: WaterType | null;
   onboarding_completed: boolean;
+  reminders_enabled: boolean;
   created_at: string;
   updated_at: string;
 };
