@@ -14,9 +14,13 @@ export default async function AppLayout({ children }: { children: React.ReactNod
 
   const { data: profile } = await supabase
     .from("profiles")
-    .select("full_name")
+    .select("full_name, onboarding_completed")
     .eq("user_id", user.id)
     .maybeSingle();
+
+  if (!profile?.onboarding_completed) {
+    redirect("/onboarding");
+  }
 
   return (
     <div className="flex min-h-screen flex-col bg-muted/40">
