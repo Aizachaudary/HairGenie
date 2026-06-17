@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 const testimonials = [
   {
@@ -24,34 +25,33 @@ const testimonials = [
 export function Testimonials() {
   return (
     <section id="testimonials" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
           People notice the difference
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Real routines, built around real hair concerns.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14 grid gap-6 sm:grid-cols-3">
-        {testimonials.map((testimonial) => (
-          <figure
-            key={testimonial.name}
-            className="shadow-soft flex flex-col rounded-2xl border border-border bg-card p-6"
-          >
-            <div className="flex gap-0.5 text-primary">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-4 fill-current" />
-              ))}
-            </div>
-            <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
-              &ldquo;{testimonial.quote}&rdquo;
-            </blockquote>
-            <figcaption className="mt-5 border-t border-border pt-4">
-              <p className="text-sm font-semibold">{testimonial.name}</p>
-              <p className="text-xs text-muted-foreground">{testimonial.detail}</p>
-            </figcaption>
-          </figure>
+        {testimonials.map((testimonial, index) => (
+          <Reveal key={testimonial.name} delay={index * 80}>
+            <figure className="shadow-soft flex h-full flex-col rounded-2xl border border-border bg-card p-6">
+              <div className="flex gap-0.5 text-primary">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-4 fill-current" />
+                ))}
+              </div>
+              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
+                &ldquo;{testimonial.quote}&rdquo;
+              </blockquote>
+              <figcaption className="mt-5 border-t border-border pt-4">
+                <p className="text-sm font-semibold">{testimonial.name}</p>
+                <p className="text-xs text-muted-foreground">{testimonial.detail}</p>
+              </figcaption>
+            </figure>
+          </Reveal>
         ))}
       </div>
     </section>

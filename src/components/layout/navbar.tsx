@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { Logo } from "@/components/layout/logo";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -36,6 +37,7 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <ThemeToggle />
           <Button variant="ghost" asChild>
             <Link href="/login">Log in</Link>
           </Button>
@@ -44,44 +46,47 @@ export function Navbar() {
           </Button>
         </div>
 
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="ghost" size="icon" className="md:hidden" aria-label="Open menu">
-              <Menu className="size-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-72">
-            <SheetHeader>
-              <SheetTitle>
-                <Logo />
-              </SheetTitle>
-            </SheetHeader>
-            <nav className="flex flex-col gap-1 px-4">
-              {navLinks.map((link) => (
-                <SheetClose asChild key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="rounded-md px-3 py-2.5 text-sm font-medium text-foreground hover:bg-accent"
-                  >
-                    {link.label}
-                  </Link>
+        <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Open menu">
+                <Menu className="size-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-72">
+              <SheetHeader>
+                <SheetTitle>
+                  <Logo />
+                </SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col gap-1 px-4">
+                {navLinks.map((link) => (
+                  <SheetClose asChild key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="rounded-md px-3 py-2.5 text-sm font-medium text-foreground hover:bg-accent"
+                    >
+                      {link.label}
+                    </Link>
+                  </SheetClose>
+                ))}
+              </nav>
+              <div className="mt-4 flex flex-col gap-2 px-4">
+                <SheetClose asChild>
+                  <Button variant="outline" asChild>
+                    <Link href="/login">Log in</Link>
+                  </Button>
                 </SheetClose>
-              ))}
-            </nav>
-            <div className="mt-4 flex flex-col gap-2 px-4">
-              <SheetClose asChild>
-                <Button variant="outline" asChild>
-                  <Link href="/login">Log in</Link>
-                </Button>
-              </SheetClose>
-              <SheetClose asChild>
-                <Button asChild>
-                  <Link href="/signup">Get started free</Link>
-                </Button>
-              </SheetClose>
-            </div>
-          </SheetContent>
-        </Sheet>
+                <SheetClose asChild>
+                  <Button asChild>
+                    <Link href="/signup">Get started free</Link>
+                  </Button>
+                </SheetClose>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );

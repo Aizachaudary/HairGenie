@@ -1,5 +1,6 @@
 import { Logo } from "@/components/layout/logo";
 import { AppNavLinks } from "@/components/layout/app-nav-links";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   DropdownMenu,
@@ -30,27 +31,30 @@ export function AppTopbar({ email, fullName }: { email: string; fullName: string
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Logo />
         <AppNavLinks />
-        <DropdownMenu>
-          <DropdownMenuTrigger className="outline-none">
-            <Avatar className="size-9 border border-border">
-              <AvatarFallback className="bg-secondary text-sm font-medium text-secondary-foreground">
-                {getInitials(fullName, email)}
-              </AvatarFallback>
-            </Avatar>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel className="truncate">{fullName || email}</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
-              <form action={signOutAction} className="w-full">
-                <button type="submit" className="flex w-full items-center gap-2 text-left">
-                  <LogOut className="size-4" />
-                  Sign out
-                </button>
-              </form>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+          <DropdownMenu>
+            <DropdownMenuTrigger className="outline-none">
+              <Avatar className="size-9 border border-border">
+                <AvatarFallback className="bg-secondary text-sm font-medium text-secondary-foreground">
+                  {getInitials(fullName, email)}
+                </AvatarFallback>
+              </Avatar>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel className="truncate">{fullName || email}</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
+                <form action={signOutAction} className="w-full">
+                  <button type="submit" className="flex w-full items-center gap-2 text-left">
+                    <LogOut className="size-4" />
+                    Sign out
+                  </button>
+                </form>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
     </header>
   );

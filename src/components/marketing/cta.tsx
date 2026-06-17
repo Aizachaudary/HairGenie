@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Reveal } from "@/components/reveal";
 
 export function Cta() {
   return (
     <section className="px-4 pb-20 sm:px-6 lg:pb-28">
-      <div className="bg-rose-glow shadow-soft-lg mx-auto max-w-5xl rounded-3xl border border-border bg-card px-8 py-14 text-center sm:px-16">
+      <Reveal
+        className="bg-rose-glow shadow-soft-lg mx-auto max-w-5xl rounded-3xl border border-border bg-card px-8 py-14 text-center sm:px-16"
+      >
         <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
           Ready to stop guessing with your hair?
         </h2>
@@ -20,7 +23,7 @@ export function Cta() {
             </Link>
           </Button>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

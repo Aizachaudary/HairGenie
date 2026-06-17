@@ -14,7 +14,7 @@ const CATEGORY_LABEL: Record<Product["category"], string> = {
 
 export function ProductCard({ product, recommended }: { product: Product; recommended: boolean }) {
   return (
-    <Card className="shadow-soft flex flex-col">
+    <Card className="shadow-soft flex flex-col transition-shadow hover:shadow-soft-lg">
       <CardContent className="flex flex-1 flex-col gap-3">
         <div className="flex items-center justify-between">
           <Badge variant="secondary">{CATEGORY_LABEL[product.category]}</Badge>

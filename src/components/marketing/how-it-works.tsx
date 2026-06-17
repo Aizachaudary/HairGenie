@@ -1,4 +1,5 @@
 import { CalendarCheck, ClipboardList, TrendingUp } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 const steps = [
   {
@@ -28,18 +29,18 @@ export function HowItWorks() {
   return (
     <section id="how-it-works" className="bg-muted/40 py-20 sm:py-28">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mx-auto max-w-2xl text-center">
+        <Reveal className="mx-auto max-w-2xl text-center">
           <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
             From quiz to routine in minutes
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
             No appointments, no guesswork — just a clear plan built around you.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-8 sm:grid-cols-3">
-          {steps.map((step) => (
-            <div key={step.step} className="relative">
+          {steps.map((step, index) => (
+            <Reveal key={step.step} delay={index * 100} className="relative">
               <div className="flex size-12 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-soft">
                 <step.icon className="size-5" />
               </div>
@@ -48,7 +49,7 @@ export function HowItWorks() {
               </span>
               <h3 className="mt-1 font-heading text-lg font-semibold">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.description}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

@@ -61,7 +61,7 @@ export function Hero() {
   return (
     <section className="bg-rose-glow relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-20 sm:px-6 lg:grid-cols-2 lg:py-28">
-        <div>
+        <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground shadow-soft">
             <Sparkles className="size-3.5 text-primary" />
             Personalized in under 3 minutes
@@ -86,7 +86,7 @@ export function Hero() {
           <p className="mt-6 text-sm text-muted-foreground">No credit card required · Free to start</p>
         </div>
 
-        <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+        <div className="animate-in fade-in slide-in-from-bottom-4 relative mx-auto w-full max-w-sm delay-150 duration-700 lg:max-w-none">
           <HeroVisual />
         </div>
       </div>

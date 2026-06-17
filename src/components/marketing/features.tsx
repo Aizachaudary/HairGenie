@@ -1,4 +1,5 @@
 import { Camera, CalendarCheck, LineChart, ShieldCheck, ShoppingBag, Sparkles } from "lucide-react";
+import { Reveal } from "@/components/reveal";
 
 const features = [
   {
@@ -42,27 +43,26 @@ const features = [
 export function Features() {
   return (
     <section id="features" className="mx-auto max-w-6xl px-4 py-20 sm:px-6 lg:py-28">
-      <div className="mx-auto max-w-2xl text-center">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">
           Everything your hair actually needs
         </h2>
         <p className="mt-4 text-lg text-muted-foreground">
           Not generic tips — a routine and product list built from your specific hair, scalp, and lifestyle.
         </p>
-      </div>
+      </Reveal>
 
       <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map((feature) => (
-          <div
-            key={feature.title}
-            className="shadow-soft rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-soft-lg"
-          >
-            <div className="flex size-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
-              <feature.icon className="size-5" />
+        {features.map((feature, index) => (
+          <Reveal key={feature.title} delay={index * 80}>
+            <div className="shadow-soft h-full rounded-2xl border border-border bg-card p-6 transition-shadow hover:shadow-soft-lg">
+              <div className="flex size-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
+                <feature.icon className="size-5" />
+              </div>
+              <h3 className="mt-4 font-heading text-lg font-semibold">{feature.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
             </div>
-            <h3 className="mt-4 font-heading text-lg font-semibold">{feature.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{feature.description}</p>
-          </div>
+          </Reveal>
         ))}
       </div>
     </section>
