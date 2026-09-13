@@ -112,7 +112,7 @@ supabase/migrations/      SQL schema, RLS policies, and storage bucket setup
 
 ## Notes on scope
 
-A few deliberate scoping decisions worth knowing about before you extend this further:
+A few  deliberate scoping decisions worth knowing about before you extend this further:
 
 - The Routine page's "daily reminders" toggle is a real, persisted preference, but there's no
   push notification or email delivery behind it — enabling it surfaces an in-app banner on the
